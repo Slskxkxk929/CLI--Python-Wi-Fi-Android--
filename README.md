@@ -44,3 +44,5 @@ pip install colorama folium
 ```bash
 python deepwebcat_scanner.py
 ```
+
+## v1 была создана за 2 дня, начало - 21.04.2026 , ~17:39 | окончание - 21.05.2026 , ~18:10
