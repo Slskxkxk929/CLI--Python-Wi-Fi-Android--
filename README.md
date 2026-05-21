@@ -36,10 +36,11 @@
 1. Установите Python с [python.org](https://python.org)
 2. Скачайте ADB с [официального сайта](https://developer.android.com/tools/releases/platform-tools)
 3. Установите библиотеки:
-   
+```bash
 pip install colorama folium
-
+```
 5. Поместите adb.exe в папку `C:\adb\` или в папку с программой
 6. Запустите:
-
+```bash
 python deepwebcat_scanner.py
+```
