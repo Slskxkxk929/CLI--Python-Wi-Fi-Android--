@@ -23,14 +23,11 @@ def parse_scan_results(raw_output):
     for line in lines:
         line = line.strip()
         
-        # Пропускаем заголовки и пустые строки
         if not line or 'BSSID' in line or '----' in line:
             continue
         
-        # Разбиваем строку по пробелам
         parts = line.split()
         
-        # Минимум должно быть: BSSID, Freq, RSSI, Age, SSID, и хотя бы один флаг
         if len(parts) < 6:
             continue
         
@@ -38,9 +35,7 @@ def parse_scan_results(raw_output):
             bssid = parts[0]
             frequency = parts[1]
             rssi = int(parts[2])
-            # parts[3] — Age, пропускаем
             
-            # Ищем, где начинаются флаги (символ '[')
             flags_start = None
             for i in range(4, len(parts)):
                 if parts[i].startswith('['):
@@ -48,11 +43,9 @@ def parse_scan_results(raw_output):
                     break
             
             if flags_start is None:
-                # Нет флагов — SSID это всё от 4 до конца
                 ssid = ' '.join(parts[4:])
                 flags = ''
             else:
-                # SSID от 4 до flags_start, флаги от flags_start до конца
                 ssid_parts = parts[4:flags_start]
                 ssid = ' '.join(ssid_parts) if ssid_parts else '<hidden>'
                 flags = ' '.join(parts[flags_start:])
@@ -238,7 +231,7 @@ if evil_twins:
 else:
     print(f'\n{Y}[✓] Подозрительных сетей не обнаружено.{N}')
 
-# --- Карта ---
+# карта
 if networks:
     print(f'\nНайдено {len(networks)} сетей для карты')
     
